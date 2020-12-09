@@ -35,3 +35,4 @@ exports.default = Object.assign(Logger_1.createLogger, exports.defaultLogger);
 __exportStar(require("./transports"), exports);
 __exportStar(require("./Logger"), exports);
 __exportStar(require("./defaults"), exports);
+__exportStar(require("./fakeConsole"), exports);

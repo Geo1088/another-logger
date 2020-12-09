@@ -6,3 +6,4 @@ export default _default;
 export * from './transports';
 export * from './Logger';
 export * from './defaults';
+export * from './fakeConsole';
