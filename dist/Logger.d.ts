@@ -33,7 +33,7 @@ export interface LoggerConfig {
     };
 }
 /** A function that logs things at a particular level. */
-interface LoggerFunction {
+export interface LoggerFunction {
     /** Sends a message to all transports configured for this level. */
     (...contents: any[]): void;
     /** Sends a message and include a stack trace. */
@@ -50,4 +50,3 @@ export interface Logger {
 }
 /** Creates a logger from the given configuration. */
 export declare function createLogger(config: LoggerConfig): Logger;
-export {};
