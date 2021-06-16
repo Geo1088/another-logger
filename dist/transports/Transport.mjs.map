@@ -1,0 +1,1 @@
+{"version":3,"file":"Transport.mjs","sources":["../../src/transports/Transport.ts"],"sourcesContent":["import { Logger } from '../Logger';\n\nexport abstract class Transport {\n\tabstract send(message: string, levelName: string, logger: Logger): void;\n}\n"],"names":[],"mappings":"MAEsB,SAAS;;;;;"}
