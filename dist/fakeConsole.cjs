@@ -37,7 +37,6 @@ function captureConsole(func) {
 function consoleTable(tabularData, properties) {
     return captureConsole(c => c.table(tabularData, properties)).replace(/\n$/, '');
 }
-consoleTable([[1, 2], [3, 4]]);
 
 exports.captureConsole = captureConsole;
 exports.consoleTable = consoleTable;

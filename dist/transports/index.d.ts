@@ -1,2 +1,2 @@
-export { Transport } from './Transport';
-export { ConsoleTransport } from './ConsoleTransport';
+export * from './BrowserConsoleTransport';
+export * from './NodeConsoleTransport';

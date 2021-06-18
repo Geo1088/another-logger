@@ -1,4 +1,4 @@
-import { ConsoleTransport } from './transports/ConsoleTransport.mjs';
+import { NodeConsoleTransport } from './transports/NodeConsoleTransport.mjs';
 
 /**
  * The default configuration options. Options set in logger.config.js are
@@ -15,7 +15,7 @@ const defaultConfig = {
         error: true,
     },
     transports: {
-        console: new ConsoleTransport({
+        console: new NodeConsoleTransport({
             levelStyles: {
                 debug: 'cyan',
                 info: 'blue',

@@ -37,10 +37,8 @@ function createLogger(config) {
         }
         // Create the logger functions for this level
         const loggerFunc = (...contents) => {
-            // HACK: `as [any]` DefinitelyTyped/DefinitelyTyped#50020
-            const message = contents.length > 0 ? util__default['default'].format(...contents) : '';
             // send message to all transports configured for this level
-            transports.forEach(transport => transport.send(message, levelName, logger));
+            transports.forEach(transport => transport.sendRaw(contents, levelName, logger));
         };
         loggerFunc.trace = (...contents) => {
             const stacktrace = new Error().stack

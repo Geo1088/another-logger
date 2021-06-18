@@ -2,7 +2,7 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var ConsoleTransport = require('./transports/ConsoleTransport.cjs');
+var NodeConsoleTransport = require('./transports/NodeConsoleTransport.cjs');
 
 /**
  * The default configuration options. Options set in logger.config.js are
@@ -19,7 +19,7 @@ const defaultConfig = {
         error: true,
     },
     transports: {
-        console: new ConsoleTransport.ConsoleTransport({
+        console: new NodeConsoleTransport.NodeConsoleTransport({
             levelStyles: {
                 debug: 'cyan',
                 info: 'blue',

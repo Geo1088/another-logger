@@ -1,8 +1,10 @@
 import path from 'path';
 import { createLogger } from './Logger.mjs';
 export { createLogger } from './Logger.mjs';
-export { Transport } from './transports/Transport.mjs';
-export { ConsoleTransport } from './transports/ConsoleTransport.mjs';
+export { Transport } from './models/Transport.mjs';
+export { FormattedTransport } from './models/FormattedTransport.mjs';
+export { BrowserConsoleTransport } from './transports/BrowserConsoleTransport.mjs';
+export { NodeConsoleTransport } from './transports/NodeConsoleTransport.mjs';
 export { defaultConfig } from './defaults.mjs';
 export { captureConsole, consoleTable } from './fakeConsole.mjs';
 
