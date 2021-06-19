@@ -1,5 +1,6 @@
+import { isNode } from './util.mjs';
 import { BrowserConsoleTransport } from './transports/BrowserConsoleTransport.mjs';
-import 'ansi-colors';
+import { NodeConsoleTransport } from './transports/NodeConsoleTransport.mjs';
 
 /** Configuration options for the default logger. */
 // NOTE: We can't enforce that defaultConfig is a LoggerConfig without losing
@@ -16,7 +17,16 @@ const defaultConfig = {
         fatal: true,
     },
     transports: {
-        console: new BrowserConsoleTransport({
+        console: isNode ? new NodeConsoleTransport({
+            levelStyles: {
+                debug: 'cyan',
+                info: 'blue',
+                success: 'green',
+                warn: 'yellow',
+                error: 'red',
+                fatal: 'magenta',
+            }
+        }) : new BrowserConsoleTransport({
             levelColors: {
                 debug: 0x11A8CD,
                 info: 0x2472C8,

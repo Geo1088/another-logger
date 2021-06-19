@@ -2,8 +2,9 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
+var util = require('./util.cjs');
 var BrowserConsoleTransport = require('./transports/BrowserConsoleTransport.cjs');
-require('ansi-colors');
+var NodeConsoleTransport = require('./transports/NodeConsoleTransport.cjs');
 
 /** Configuration options for the default logger. */
 // NOTE: We can't enforce that defaultConfig is a LoggerConfig without losing
@@ -20,7 +21,16 @@ const defaultConfig = {
         fatal: true,
     },
     transports: {
-        console: new BrowserConsoleTransport.BrowserConsoleTransport({
+        console: util.isNode ? new NodeConsoleTransport.NodeConsoleTransport({
+            levelStyles: {
+                debug: 'cyan',
+                info: 'blue',
+                success: 'green',
+                warn: 'yellow',
+                error: 'red',
+                fatal: 'magenta',
+            }
+        }) : new BrowserConsoleTransport.BrowserConsoleTransport({
             levelColors: {
                 debug: 0x11A8CD,
                 info: 0x2472C8,

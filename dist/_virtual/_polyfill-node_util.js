@@ -2,6 +2,8 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
+require('process');
+
 var formatRegExp = /%[sdj%]/g;
 function format(f) {
   if (!isString(f)) {
