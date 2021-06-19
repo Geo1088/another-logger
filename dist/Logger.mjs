@@ -1,4 +1,4 @@
-import util from 'util';
+import { format } from './_virtual/_polyfill-node_util.js';
 import { defaultConfig } from './defaults.mjs';
 import { consoleTable } from './fakeConsole.mjs';
 
@@ -38,8 +38,7 @@ function createLogger(config) {
                 .replace(/.*\n.*/, '')
                 // Remove lines coming from internal modules
                 .replace(/\n\s*at \S+ \(internal[\s\S]*$/, '');
-            // HACK: `as [any]` DefinitelyTyped/DefinitelyTyped#50020
-            loggerFunc(util.format(...contents) + stacktrace);
+            loggerFunc(format(...contents) + stacktrace);
         };
         loggerFunc.table = (...contents) => {
             let tableString = consoleTable(...contents);

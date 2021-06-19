@@ -1,4 +1,4 @@
-import { formatWithOptions } from 'util';
+import { format } from '../_virtual/_polyfill-node_util.js';
 import { Transport } from './Transport.mjs';
 
 /**
@@ -12,7 +12,7 @@ class FormattedTransport extends Transport {
         this.formatOptions = formatOptions;
     }
     sendRaw(contents, levelName, logger) {
-        let message = formatWithOptions(this.formatOptions, ...contents);
+        let message = format(...contents);
         this.send(message, levelName, logger);
     }
 }

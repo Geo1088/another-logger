@@ -2,7 +2,8 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var path = require('path');
+var _polyfillNode_process = require('./_virtual/_polyfill-node_process.js');
+var _polyfillNode_path = require('./_virtual/_polyfill-node_path.js');
 var Logger = require('./Logger.cjs');
 var Transport = require('./models/Transport.cjs');
 var FormattedTransport = require('./models/FormattedTransport.cjs');
@@ -11,14 +12,10 @@ var NodeConsoleTransport = require('./transports/NodeConsoleTransport.cjs');
 var defaults = require('./defaults.cjs');
 var fakeConsole = require('./fakeConsole.cjs');
 
-function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
-
-var path__default = /*#__PURE__*/_interopDefaultLegacy(path);
-
 // Attempt to read config from logger.config.js or logger.config.json in cwd
 let baseConfig;
 try {
-    const configPath = path__default['default'].join(process.cwd(), 'logger.config');
+    const configPath = _polyfillNode_path['default'].join(_polyfillNode_process['default'].cwd(), 'logger.config');
     // eslint-disable-next-line global-require
     const fileContents = require(configPath);
     baseConfig = fileContents || {};

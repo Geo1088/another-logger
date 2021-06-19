@@ -1,4 +1,4 @@
-import { Transport } from './models';
+import { Transport } from './models/Transport';
 /** Configuration for a logger. */
 export interface LoggerConfig {
     /**

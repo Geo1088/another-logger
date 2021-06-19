@@ -2,13 +2,9 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var util = require('util');
+var _polyfillNode_util = require('./_virtual/_polyfill-node_util.js');
 var defaults = require('./defaults.cjs');
 var fakeConsole = require('./fakeConsole.cjs');
-
-function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
-
-var util__default = /*#__PURE__*/_interopDefaultLegacy(util);
 
 /** Creates a logger from the given configuration. */
 function createLogger(config) {
@@ -46,8 +42,7 @@ function createLogger(config) {
                 .replace(/.*\n.*/, '')
                 // Remove lines coming from internal modules
                 .replace(/\n\s*at \S+ \(internal[\s\S]*$/, '');
-            // HACK: `as [any]` DefinitelyTyped/DefinitelyTyped#50020
-            loggerFunc(util__default['default'].format(...contents) + stacktrace);
+            loggerFunc(_polyfillNode_util.format(...contents) + stacktrace);
         };
         loggerFunc.table = (...contents) => {
             let tableString = fakeConsole.consoleTable(...contents);

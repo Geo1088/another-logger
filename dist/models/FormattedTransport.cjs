@@ -2,7 +2,7 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var util = require('util');
+var _polyfillNode_util = require('../_virtual/_polyfill-node_util.js');
 var Transport = require('./Transport.cjs');
 
 /**
@@ -16,7 +16,7 @@ class FormattedTransport extends Transport.Transport {
         this.formatOptions = formatOptions;
     }
     sendRaw(contents, levelName, logger) {
-        let message = util.formatWithOptions(this.formatOptions, ...contents);
+        let message = _polyfillNode_util.format(...contents);
         this.send(message, levelName, logger);
     }
 }

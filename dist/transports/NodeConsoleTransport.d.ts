@@ -1,5 +1,5 @@
 import ansiColors from 'ansi-colors';
-import { FormattedTransport } from '../models';
+import { FormattedTransport } from '../models/FormattedTransport';
 declare type StyleKey = keyof typeof ansiColors["styles"];
 /** A transport that logs messages to the Node.js console. */
 export declare class NodeConsoleTransport extends FormattedTransport {

@@ -2,10 +2,10 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
+var _polyfillNode_process = require('./_virtual/_polyfill-node_process.js');
 var stream = require('stream');
 var console = require('console');
 
-// Eventually we'll use a fake console for more stuff, for now this file just
 function captureConsole(func) {
     // Create an output stream that adds all the data sent to it to a string,
     // and patch it so the console will think it has the same color capability
@@ -17,9 +17,9 @@ function captureConsole(func) {
             next();
         }
     }), {
-        isTTY: process.stdout.isTTY,
+        isTTY: _polyfillNode_process['default'].stdout.isTTY,
         getColorDepth(...args) {
-            return process.stdout.getColorDepth(...args);
+            return _polyfillNode_process['default'].stdout.getColorDepth(...args);
         }
     });
     // Create a console that sends its stdout to the output stream
