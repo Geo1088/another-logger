@@ -1,7 +1,16 @@
-import { LoggerConfig } from './Logger';
-/**
- * The default configuration options. Options set in logger.config.js are
- * merged with these; that is, the default levels and the default `console`
- * transport will always be available, unless you override them by name.
- */
-export declare const defaultConfig: LoggerConfig;
+import { BrowserConsoleTransport } from './transports/BrowserConsoleTransport';
+import { NodeConsoleTransport } from './transports/NodeConsoleTransport';
+/** Configuration options for the default logger. */
+export declare const defaultConfig: {
+    levels: {
+        debug: boolean;
+        info: boolean;
+        success: boolean;
+        warn: boolean;
+        error: boolean;
+        fatal: boolean;
+    };
+    transports: {
+        console: BrowserConsoleTransport | NodeConsoleTransport;
+    };
+};

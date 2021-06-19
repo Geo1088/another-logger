@@ -2,38 +2,25 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var _polyfillNode_process = require('./_virtual/_polyfill-node_process.js');
 var BrowserConsoleTransport = require('./transports/BrowserConsoleTransport.cjs');
-var NodeConsoleTransport = require('./transports/NodeConsoleTransport.cjs');
+require('ansi-colors');
 
-// If true, we're running under Node.js. If false, we're in a browser.
-const isNode = typeof _polyfillNode_process['default'] !== 'undefined' && _polyfillNode_process['default'].version != null && _polyfillNode_process['default'].versions.node != null;
-/**
- * The default configuration options. Options set in logger.config.js are
- * merged with these; that is, the default levels and the default `console`
- * transport will always be available, unless you override them by name.
- */
+/** Configuration options for the default logger. */
+// NOTE: We can't enforce that defaultConfig is a LoggerConfig without losing
+//       more specific information that we want to keep about its structure, so
+//       manually double-check that it's compatible with the LoggerConfig
+//       interface after editing.
 const defaultConfig = {
     levels: {
         debug: true,
         info: true,
-        log: true,
         success: true,
         warn: true,
         error: true,
         fatal: true,
     },
     transports: {
-        console: isNode ? new NodeConsoleTransport.NodeConsoleTransport({
-            levelStyles: {
-                debug: 'cyan',
-                info: 'blue',
-                success: 'green',
-                warn: 'yellow',
-                error: 'red',
-                fatal: 'magenta',
-            }
-        }) : new BrowserConsoleTransport.BrowserConsoleTransport({
+        console: new BrowserConsoleTransport.BrowserConsoleTransport({
             levelColors: {
                 debug: 0x11A8CD,
                 info: 0x2472C8,
@@ -43,7 +30,7 @@ const defaultConfig = {
                 fatal: 0xBC3FBC,
             },
         }),
-    }
+    },
 };
 
 exports.defaultConfig = defaultConfig;

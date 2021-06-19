@@ -1,4 +1,3 @@
-export declare const defaultLogger: import("./Logger").Logger;
 export * from './models/Transport';
 export * from './models/FormattedTransport';
 export * from './transports/BrowserConsoleTransport';

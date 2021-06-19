@@ -1,35 +1,22 @@
-import browser$1 from './_virtual/_polyfill-node_process.js';
 import { BrowserConsoleTransport } from './transports/BrowserConsoleTransport.mjs';
-import { NodeConsoleTransport } from './transports/NodeConsoleTransport.mjs';
+import 'ansi-colors';
 
-// If true, we're running under Node.js. If false, we're in a browser.
-const isNode = typeof browser$1 !== 'undefined' && browser$1.version != null && browser$1.versions.node != null;
-/**
- * The default configuration options. Options set in logger.config.js are
- * merged with these; that is, the default levels and the default `console`
- * transport will always be available, unless you override them by name.
- */
+/** Configuration options for the default logger. */
+// NOTE: We can't enforce that defaultConfig is a LoggerConfig without losing
+//       more specific information that we want to keep about its structure, so
+//       manually double-check that it's compatible with the LoggerConfig
+//       interface after editing.
 const defaultConfig = {
     levels: {
         debug: true,
         info: true,
-        log: true,
         success: true,
         warn: true,
         error: true,
         fatal: true,
     },
     transports: {
-        console: isNode ? new NodeConsoleTransport({
-            levelStyles: {
-                debug: 'cyan',
-                info: 'blue',
-                success: 'green',
-                warn: 'yellow',
-                error: 'red',
-                fatal: 'magenta',
-            }
-        }) : new BrowserConsoleTransport({
+        console: new BrowserConsoleTransport({
             levelColors: {
                 debug: 0x11A8CD,
                 info: 0x2472C8,
@@ -39,7 +26,7 @@ const defaultConfig = {
                 fatal: 0xBC3FBC,
             },
         }),
-    }
+    },
 };
 
 export { defaultConfig };
